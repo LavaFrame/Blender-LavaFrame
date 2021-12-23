@@ -11,9 +11,9 @@ class LavaFrameProperty:
         ])
         properties = properties.replace('[', '').replace(']', '').replace(',', '').replace('(', '').replace(')', '')
         if not self.__dict__.get("name"):
-            return f"{type(self).__name__}\n{{\n{properties}\n}}"
+            return f"{type(self).__name__}\n{{\n{properties}\n}}\n"
         else:
-            return f"{type(self).__name__} {self.__dict__['name']}\n{{\n{properties}\n}}"
+            return f"{type(self).__name__} {self.__dict__['name']}\n{{\n{properties}\n}}\n"
     
     def __init__(self, **kwargs) -> None:
         for v in kwargs.keys():
@@ -35,13 +35,13 @@ class Camera(LavaFrameProperty):
     lookAt:tuple[float, float, float]
     fov:float
 
-class mesh(LavaFrameProperty):
+class Mesh(LavaFrameProperty):
     file:str
     material:str
     position:tuple[float, float, float]
     scale:tuple[float, float, float]
 
-class light(LavaFrameProperty):
+class Light(LavaFrameProperty):
     type:Literal["Sphere", "Quad"]
     position:tuple[float, float, float]
     emission:tuple[float, float, float]
@@ -49,7 +49,7 @@ class light(LavaFrameProperty):
     v1:tuple[float, float, float]
     v2:tuple[float, float, float]
 
-class material(LavaFrameProperty):
+class Material(LavaFrameProperty):
     name:str
     color:tuple[float, float, float]
     albedo:tuple[float, float, float]
@@ -75,3 +75,4 @@ class material(LavaFrameProperty):
 if __name__ == "__main__":
     r = Renderer(intValue=90, floatValue=10.5, stringValue="John", tupleValue=(1, 2))
     print(str(r))
+    print(r)
